@@ -49,7 +49,7 @@ def freetoplaychamps(apikey, region):
     print (js)
     length = len(js['champions'])
     champnamelist = list()
-    print ('Loading ...')
+    print ('Loading ....')
     for id in range(length):
         champid = js['champions'][id]["id"]
         champname = ChampSelect(champid)
@@ -57,7 +57,7 @@ def freetoplaychamps(apikey, region):
         champnamelist.append(champname)
     for lists in champnamelist:
         print (lists)
-    
+
 def getSummonerID():
     print ("Please enter the summoner's name :")
     summonerName = input()
