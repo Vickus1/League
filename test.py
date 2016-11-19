@@ -44,16 +44,13 @@ def freetoplaychamps(apikey, region):
             'api_key' : apikey}
 
     r = requests.get(REGION_ENDPOINT+getchamp, data)
-    print (r.status_code)
     js = r.json()
-    print (js)
     length = len(js['champions'])
     champnamelist = list()
     print ('Loading ....')
     for id in range(length):
         champid = js['champions'][id]["id"]
         champname = ChampSelect(champid)
-        #print (champname)
         champnamelist.append(champname)
     for lists in champnamelist:
         print (lists)
