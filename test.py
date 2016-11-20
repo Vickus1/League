@@ -47,7 +47,8 @@ def freetoplaychamps(apikey, region):
     js = r.json()
     length = len(js['champions'])
     champnamelist = list()
-    print ('Loading ....')
+    print ('Loading .....')
+    print ('...')
     for id in range(length):
         champid = js['champions'][id]["id"]
         champname = ChampSelect(champid)
