@@ -1,4 +1,4 @@
-import os
+import os, sys
 import requests
 import json
 
@@ -57,8 +57,9 @@ def freetoplaychamps(apikey, region):
         print (lists)
 
 def getSummonerID():
-    print ("Please enter the summoner's name :")
-    summonerName = input()
+    print ("Please enter the summoner's name :", sys.argv[0])
+    #summonerName = input()
+    summonerName = sys.argv[0]
     extension = "/api/lol/{region}/v1.4/summoner/by-name/{summonerNames}"
     extension = extension.format(region = region, summonerNames = summonerName)
     data = {'api_key' : API_KEY}
@@ -73,5 +74,5 @@ def getSummonerID():
     return js[summonerName]['id']
 
 #findChamp(API_KEY, region)
-freetoplaychamps(API_KEY, region)
-#getSummonerID()
+#freetoplaychamps(API_KEY, region)
+getSummonerID()
