@@ -26,8 +26,12 @@ def withSami(flag):
     elif flag == 12:
         return "Oh noes! D:"
     elif flag == 13:
-        return "I want to come too!"
+        return "That's right im a chondy!"
     elif flag == 14:
-        return "Hell nawwwww"
+        return "Go away chondy!"
     elif flag == 15:
+        return "Plis i want to go!"
+    elif flag == 16:
+        return "Hell nawwwww"
+    elif flag == 17:
         return "Noooooo"

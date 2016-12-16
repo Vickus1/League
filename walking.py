@@ -83,6 +83,8 @@ class Player(pygame.sprite.Sprite):
         self.flag = True
 
     def update(self):
+        self.rect.bottom = 460 - 10
+        
 ##        global lists
 ##        self.rect.bottom = 460 - 10
 ##        self.speedx = 0
@@ -204,7 +206,7 @@ def drawsami(surf):
     surf.blit(samirect, (sami_rectx, sami_recty))
 
 def draw_bubble(surf, x, y, sizex, sizey, boolx):
-    bubble = pygame.image.load(os.path.join(img_folder, 'comic-2.png')).convert_alpha()
+    bubble = pygame.image.load(os.path.join(img_folder, 'blue.png')).convert_alpha()
 
     if sizey ==65:
         bubble_recty = y
@@ -249,32 +251,34 @@ while running:
                     talk = textforbaby.chooseText(i)
                 else:
                     talk = textforbaby.withSami(i)
-
+    print (i)
     all_sprites.update()
     SCREEN.blit(background, background_rect)
     all_sprites.draw(SCREEN)
 
-    if i%2 == 1 and i<10:
-        me = draw_text1(SCREEN, talk, 25, 60, 290)
+    if i%2 == 1 and i<11:
+        me = draw_text1(SCREEN, talk, 20, 60, 290)
         #print (me[2])
         if type(talk)==str:
             draw_bubble(SCREEN, 480/2 - 190, 460/2 + 50, me[2], 65, False)
-            draw_text2(SCREEN, talk, 25, 60, 290)
+            draw_text2(SCREEN, talk, 20, 60, 290)
 
         else:
             draw_bubble(SCREEN, 480/2 - 190, 460/2 + 50, me[2]+20, 65*2, False)
             draw_text2(SCREEN, talk, 25, 60, 290)
+    elif i==0:
+        pass
 
     #sami
-    elif i%2 == 1 and i>10:
+    elif (i%2 == 1) and (i >= 11):
         me = draw_text1(SCREEN, talk, 25, 60, 290)
         #print (me[2])
         if type(talk)==str:
             draw_bubble(SCREEN, 480+50, 460/2 + 50, me[2], 65, False)
             draw_text2(SCREEN, talk, 25, 540, 290)
             drawsami(SCREEN)
-
-    elif i%2 == 0 and i>10:
+    # me vs sami
+    elif i%2 == 0 and i>=11:
         me = draw_text1(SCREEN, talk, 25, 60, 290)
         #print (me[2])
         if type(talk)==str:
@@ -282,12 +286,11 @@ while running:
             draw_text2(SCREEN, talk, 25, 100, 290)
             drawsami(SCREEN)
 
-    elif i%2 == 0 and i<10:
+    elif i%2 == 0 and i<11:
         #baby's bubble
         me2 = draw_text1(SCREEN, talk, 20, 480 - 160, 460 - 130)
-        print (me2[2])
+        #print (me2[2])
         draw_bubble(SCREEN, 480 - 480/4 - 50, 460 - 140, me2[2], 65, True)
         draw_text2(SCREEN, talk, 20, 480 - 160, 460 - 130)
-    elif i == 0:
-        pass
+
     pygame.display.flip()
