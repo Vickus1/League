@@ -19,3 +19,15 @@ def chooseText(flag):
         return ["How about we go to an", "expensive sushi restaurant?"]
     elif flag == 10:
         return "ok!"
+
+def withSami(flag):
+    if flag == 11:
+        return "Chondy Sami here!"
+    elif flag == 12:
+        return "Oh noes! D:"
+    elif flag == 13:
+        return "I want to come too!"
+    elif flag == 14:
+        return "Hell nawwwww"
+    elif flag == 15:
+        return "Noooooo"
