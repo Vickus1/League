@@ -23,16 +23,16 @@ YELLOW = (255, 255, 0)
 if True:
     game_folder = os.path.dirname(__file__)
     print (game_folder)
-    img_folder = os.path.join(game_folder, "img")
+    img_folder = os.path.join(game_folder, "assets")
     print (img_folder)
-    img_folder2 = os.path.join(game_folder, "C:\\Users\Victor\Downloads\p1_fullwalk")
-    print (img_folder2)
-    img_folder3 = os.path.join(game_folder, "C:\\Users\Victor\Downloads\p3_walk")
-    global lists
-    lists = os.listdir('C:\\Users\Victor\Downloads\p1_fullwalk')
+##    img_folder2 = os.path.join(game_folder, "C:\\Users\Victor\Downloads\p1_fullwalk")
+##    print (img_folder2)
+##    img_folder3 = os.path.join(game_folder, "C:\\Users\Victor\Downloads\p3_walk")
+##    global lists
+##    lists = os.listdir('C:\\Users\Victor\Downloads\p1_fullwalk')
 
-    for i in range(len(lists)):
-        lists[i] = str(lists[i])
+##    for i in range(len(lists)):
+##        lists[i] = str(lists[i])
 
 class FpsClock:
     def __init__(self):
@@ -66,7 +66,7 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         # Create an image of the block and fill it with color
         # Could also be an image loaded
-        self.image = pygame.image.load(os.path.join(img_folder2, 'p1_walk01.png')).convert()
+        self.image = pygame.image.load(os.path.join(img_folder, 'p1.png')).convert()
         self.image.set_colorkey(BLACK)
         #self.image = pygame.transform.scale(self.image, (20, 30))
         # Gets the rectangle object that has the dimensions of the image
@@ -83,48 +83,53 @@ class Player(pygame.sprite.Sprite):
         self.flag = True
 
     def update(self):
-        global lists
+##        global lists
+##        self.rect.bottom = 460 - 10
+##        self.speedx = 0
+##        if self.flag == True:
+##            self.image = pygame.image.load(os.path.join(img_folder2, lists[self.count])).convert()
+##            self.image.set_colorkey(BLACK)
+##        else:
+##            self.image = pygame.image.load(os.path.join(img_folder2, lists[self.count])).convert()
+##            self.image = pygame.transform.flip(self.image, True, False)
+##            self.image.set_colorkey(BLACK)
+##        keystate = pygame.key.get_pressed()
+##        if keystate[pygame.K_LEFT] and self.count < 10:
+##            self.speedx = -7
+##            self.count += 1
+##            self.flag = False
+##            self.image.set_colorkey(BLACK)
+##        if keystate[pygame.K_RIGHT] and self.count < 10:
+##            self.speedx = 7
+##            self.count += 1
+##            self.flag = True
+##            self.image.set_colorkey(BLACK)
+##        if keystate[pygame.K_DOWN]:
+##            self.image = pygame.image.load(os.path.join(img_folder2, lists[-2])).convert()
+##            self.image.set_colorkey(BLACK)
+##            self.rect.bottom = 460 + 15
+##        if keystate[pygame.K_SPACE]:
+##            while self.jump > 0:
+##                self.rect.y -= self.jump
+##                self.jump -= 1
+##                print (self.jump)
+##        if self.count == 10:
+##            self.count = 0
+##        self.rect.x += self.speedx
+##        if self.rect.right > 480:
+##            self.rect.right = 480
+##        elif self.rect.left < 0:
+##            self.rect.left = 0
+        self.speedx = -0
         self.rect.bottom = 460 - 10
-        self.speedx = 0
-        if self.flag == True:
-            self.image = pygame.image.load(os.path.join(img_folder2, lists[self.count])).convert()
-            self.image.set_colorkey(BLACK)
-        else:
-            self.image = pygame.image.load(os.path.join(img_folder2, lists[self.count])).convert()
-            self.image = pygame.transform.flip(self.image, True, False)
-            self.image.set_colorkey(BLACK)
-        keystate = pygame.key.get_pressed()
-        if keystate[pygame.K_LEFT] and self.count < 10:
-            self.speedx = -7
-            self.count += 1
-            self.flag = False
-            self.image.set_colorkey(BLACK)
-        if keystate[pygame.K_RIGHT] and self.count < 10:
-            self.speedx = 7
-            self.count += 1
-            self.flag = True
-            self.image.set_colorkey(BLACK)
-        if keystate[pygame.K_DOWN]:
-            self.image = pygame.image.load(os.path.join(img_folder2, lists[-2])).convert()
-            self.image.set_colorkey(BLACK)
-            self.rect.bottom = 460 + 15
-        if keystate[pygame.K_SPACE]:
-            while self.jump > 0:
-                self.rect.y -= self.jump
-                self.jump -= 1
-                print (self.jump)
-        if self.count == 10:
-            self.count = 0
         self.rect.x += self.speedx
-        if self.rect.right > 480:
-            self.rect.right = 480
-        elif self.rect.left < 0:
-            self.rect.left = 0
+        if self.rect.x <= 0:
+            self.rect.x = 480 - 480/4
 
 class baby(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(os.path.join(img_folder3, 'p3_walk02.png')).convert()
+        self.image = pygame.image.load(os.path.join(img_folder, 'p3.png')).convert()
         self.image.set_colorkey(BLACK)
         self.image = pygame.transform.scale(self.image, (50, 65))
         self.image = pygame.transform.flip(self.image, True, False)
