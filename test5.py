@@ -65,12 +65,12 @@ class Player(pygame.sprite.Sprite):
 
 
 class Mob(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, tappu):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(os.path.join(img_folder, 'meteorGrey_big2.png')).convert()
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
-        self.rect.top = 5
+        self.rect.top = tappu
         #self.rect.centerx = WIDTH/2
         self.rect.x = random.randrange(0, WIDTH - self.rect.width)
         self.rect.y = random.randrange(-10, 0)
@@ -102,7 +102,7 @@ class Bullet(pygame.sprite.Sprite):
 all_sprites = pygame.sprite.Group()
 player1 = Player()
 #Babycy = baby()
-mobs = pygame.sprite.Group()
+mobs = pygame.sprite.Group(5)
 all_sprites.add(player1)
 bullets = pygame.sprite.Group()
 

@@ -34,4 +34,6 @@ def withSami(flag):
     elif flag == 16:
         return "Hell nawwwww"
     elif flag == 17:
-        return "Noooooo"
+        return "Pliss I hungry!"
+    elif flag == 18:
+        return "Destroy sami!"
